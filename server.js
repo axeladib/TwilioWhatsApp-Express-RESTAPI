@@ -4,8 +4,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 const cors = require("cors");
-
-
+const messageRoute = require("./routes/messageRoute");
 
 //TODO: .env file encrytion
 const PORT = process.env.PORT || 3000;
@@ -24,6 +23,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors(corsOptions));
 
 //TODO: intitiate routes
+app.use("/api/message", messageRoute);
 
 //TODO: Home page route where server render
 app.get("/", (req, res) => {
@@ -36,7 +36,6 @@ app.listen(PORT, () => {
 });
 
 //TODO: Send message to the sender
-
 
 //Prevent the strictQuery in MongoDB
 mongoose.set("strictQuery", false);
