@@ -51,7 +51,7 @@ const replyMessage = asyncHandler(async (req, res) => {
 
     const message = await client.messages.create({
       from: senderNumber,
-      body: "Hello there !!!My Name is Nabil Adib. This is ServiceSync by Fadib Enterprise where we are trying to make WhatsApp is a bridge to your productivity place.ServiceSync is at testing purpos.",
+      body: "Hello there !!!My Name is Nabil Adib. This is ServiceSync by Fadib Enterprise where we are trying to make WhatsApp is a bridge to your productivity place.ServiceSync is at testing purpose" ,
       to: receiverNumber,
     });
     console.log(message);
