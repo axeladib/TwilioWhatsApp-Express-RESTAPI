@@ -45,19 +45,19 @@ const createMessage = async (req, res) => {
 
 const replyMessage = asyncHandler(async (req, res) => {
   try {
-    const incomingMessage = req.body.body;
-    const senderNumber = req.body.from;
- 
-    const replyMessage = `You said ${incomingMessage}`;
-    const receiverNumber = +601129512295;
+    const receiverNumber = req.body.From;
+    const senderNumber = req.body.To;
+    const getMessage = `You said ${req.body.Body}`;
 
     const message = await client.messages.create({
-      from: `whatsapp:${senderNumber}`,
-      body: replyMessage,
-      to: `whatsapp:${receiverNumber}`,
+      from: senderNumber,
+      body: "Hello there !!!My Name is Nabil Adib. This is ServiceSync by Fadib Enterprise where we are trying to make WhatsApp is a bridge to your productivity place.ServiceSync is at testing purpos.",
+      to: receiverNumber,
     });
     console.log(message);
-    res.status(200).json({ message: "Successfully reply", response: message });
+    res
+      .status(200)
+      .json({ message: "Message sent successfully", response: message });
   } catch (error) {
     const errors = errorHandler(error);
     res.status(500).json({ errors });
